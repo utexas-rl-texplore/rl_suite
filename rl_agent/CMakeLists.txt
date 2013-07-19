@@ -1,35 +1,20 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+# http://ros.org/doc/groovy/api/catkin/html/user_guide/supposed.html
+cmake_minimum_required(VERSION 2.8.3)
+project(rl_agent)
+find_package(catkin REQUIRED COMPONENTS std_msgs roscpp rl_msgs tf rl_common)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
+catkin_package(
+  CATKIN_DEPENDS std_msgs roscpp rl_msgs tf rl_common
+  INCLUDE_DIRS include
+  LIBRARIES agentlib
+)
 
-rosbuild_init()
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
-
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
-
-rosbuild_add_library(agentlib
+add_library(agentlib
   src/Agent/DiscretizationAgent.cc 
   src/Agent/QLearner.cc
   src/Agent/ModelBasedAgent.cc
@@ -77,9 +62,22 @@ rosbuild_add_library(agentlib
   src/newmat/newmat9.cc
 )
 
-
-rosbuild_add_executable(agent
+add_executable(agent
   src/agent.cpp
 )
+target_link_libraries(agent 
+  agentlib
+  ${catkin_LIBRARIES}
+)
 
-target_link_libraries(agent agentlib)
+# install targets
+install (DIRECTORY include/rl_agent/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+
+install (TARGETS
+  agent
+  agentlib
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
