@@ -1,0 +1,23 @@
+<package>
+  <name>rl_msgs</name>
+  <version>0.1.0</version>
+  <description>Provides the set of ROS messages to be passed between reinforcement learning (RL) agent nodes and environment nodes. Developed by</description>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/rl_msgs</url>
+
+  <author email="michael.quinlan@gmail.com">Michael Quinlan</author>
+  <author email="patriotsfan@gmail.com">Todd Hester</author>
+  <author email="piyushk@gmail.com">Piyush Khandelwal</author>
+  <maintainer email="piyushk@gmail.com">Piyush Khandelwal</maintainer>
+
+  <builtool_depend>catkin</builtool_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <run_depend>std_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+</package>
