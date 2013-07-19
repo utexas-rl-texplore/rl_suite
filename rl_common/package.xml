@@ -1,0 +1,15 @@
+<package>
+  <name>rl_common</name>
+  <version>0.1.0</version>
+  <description>Common files required for RL agents and environments. Including the interface defining agents and environments. Developed by</description>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/rl_common</url>
+
+  <author email="patriotsfan@gmail.com">Todd Hester</author>
+  <maintainer email="piyushk@gmail.com">Piyush Khandelwal</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

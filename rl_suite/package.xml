@@ -11,10 +11,10 @@
   <author email="piyushk@gmail.com">Piyush Khandelwal</author>
   <maintainer email="piyushk@gmail.com">Piyush Khandelwal</maintainer>
 
-  <builtool_depend>catkin</builtool_depend>
+  <buildtool_depend>catkin</buildtool_depend>
 
   <!-- <run_depend>rl_agent</run_depend> -->
-  <!-- <run_depend>rl_common</run_depend> -->
+  <run_depend>rl_common</run_depend>
   <!-- <run_depend>rl_env</run_depend> -->
   <!-- <run_depend>rl_experiment</run_depend> -->
   <run_depend>rl_msgs</run_depend>
