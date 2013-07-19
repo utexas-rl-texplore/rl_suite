@@ -9,7 +9,6 @@
 
   <author email="michael.quinlan@gmail.com">Michael Quinlan</author>
   <author email="patriotsfan@gmail.com">Todd Hester</author>
-  <author email="piyushk@gmail.com">Piyush Khandelwal</author>
   <maintainer email="piyushk@gmail.com">Piyush Khandelwal</maintainer>
 
   <builtool_depend>catkin</builtool_depend>
